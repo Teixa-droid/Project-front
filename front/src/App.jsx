@@ -19,7 +19,8 @@ import { AuthContext } from './context/authContext';
 import jwt_decode from 'jwt-decode';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  //uri: 'http://localhost:4000/graphql',
+  uri: 'https://servidor-gp.herokuapp.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
