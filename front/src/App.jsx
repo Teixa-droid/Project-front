@@ -8,19 +8,22 @@ import Index from './pages/Index';
 import Page2 from './pages/Page2';
 import IndexCategory1 from './pages/category1/Index';
 import Category1 from './pages/category1/Category1Page1';
-import './styles/globals.css';
-import './styles/table.css';
 import UsersIndex from './pages/users';
 import EditUser from './pages/users/edit';
 import AuthLayout from './layouts/AuthLayout';
 import Register from './pages/auth/register';
+import NewProject from './pages/projects/NewProject';
 import Login from './pages/auth/login';
 import { AuthContext } from './context/authContext';
+import IndexProjects from './pages/projects/Index';
+import IndexInscriptions from './pages/inscriptions';
 import jwt_decode from 'jwt-decode';
+import './styles/globals.css';
+import './styles/table.css';
 
 const httpLink = createHttpLink({
-  //uri: 'http://localhost:4000/graphql',
-  uri: 'https://servidor-gp.herokuapp.com/graphql',
+  uri: 'http://localhost:4000/graphql',
+  //uri: 'https://servidor-gp.herokuapp.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -42,7 +45,8 @@ function App() {
   const [authToken, setAuthToken] = useState('');
 
   const setToken = (token) => {
-    setAuthToken(token)
+    console.log('set token', token);
+    setAuthToken(token);
     if (token) {
       localStorage.setItem('token', JSON.stringify(token));
     } else {
@@ -72,13 +76,16 @@ function App() {
             <Routes>
               <Route path='/' element={<PrivateLayout />}>
                 <Route path='' element={<Index />} />
-                <Route path='users' element={<UsersIndex />} />
-                <Route path='users/edit/:_id' element={<EditUser />} />
+                <Route path='/users' element={<UsersIndex />} />
+                <Route path='/users/edit/:_id' element={<EditUser />} />
+                <Route path='/projects' element={<IndexProjects />} />
+                <Route path='/projects/new' element={<NewProject />} />
+                <Route path='/inscriptions' element={<IndexInscriptions />} />
                 <Route path='page2' element={<Page2 />} />
                 <Route path='category1' element={<IndexCategory1 />} />
                 <Route path='category1/page1' element={<Category1 />} />
               </Route>
-              <Route path="/auth" element={<AuthLayout />}>
+              <Route path='/auth' element={<AuthLayout />}>
                 <Route path='register' element={<Register />} />
                 <Route path='login' element={<Login />} />
               </Route>

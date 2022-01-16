@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const GET_USERS = gql`
-query Users {
-  Users {
+query Query($filter: FilterUser) {
+  Users(filter: $filter) {
     _id
     name
     lastname
@@ -28,4 +28,4 @@ query User($_id: String!) {
 `;
 
 
-export {GET_USERS, GET_USER} ;
+export { GET_USERS, GET_USER };

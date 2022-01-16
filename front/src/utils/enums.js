@@ -8,4 +8,12 @@ const Enum_UserState = {
     AUTHORIZED : 'Authorized',
     UNAUTHORIZED: 'Unauthorized',
 };
-export { Enum_Rol, Enum_UserState };
+const Enum_ProjectState = {
+    ACTIVE: 'Active',
+    INACTIVE: 'Inactive',
+};
+const Enum_ObjectiveType = {
+    GENERAL : 'General',
+    SPICIFIC : 'Spicific',
+};
+export { Enum_Rol, Enum_UserState, Enum_ProjectState, Enum_ObjectiveType};
