@@ -30,5 +30,20 @@ mutation CreateProject(
   }
 }
 `;
+const EDIT_OBJECTIVE = gql`
+mutation EditObjective($idProject: String!, $indexObjective: Int!, $fields: objectiveFields!) {
+  editObjective(idProject: $idProject, indexObjective: $indexObjective, fields: $fields) {
+  _id  
+  }
+}
+`;
 
-export { EDIT_PROJECT, CREATE_PROJECT };
+const DELETE_OBJECTIVE = gql`
+mutation Mutation($idProject: String!, $idObjective: String!) {
+  removeObjective(idProject: $idProject, idObjective: $idObjective) {
+    _id
+  }
+}
+`;
+
+export { EDIT_PROJECT, CREATE_PROJECT, DELETE_OBJECTIVE, EDIT_OBJECTIVE };

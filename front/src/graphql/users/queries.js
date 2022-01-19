@@ -23,6 +23,7 @@ query User($_id: String!) {
     state
     identification
     rol
+    picture
   }
 }
 `;

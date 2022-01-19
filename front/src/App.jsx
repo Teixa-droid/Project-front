@@ -17,6 +17,7 @@ import Login from './pages/auth/login';
 import { AuthContext } from './context/authContext';
 import IndexProjects from './pages/projects/Index';
 import IndexInscriptions from './pages/inscriptions';
+import Profile  from './pages/profile';
 import jwt_decode from 'jwt-decode';
 import './styles/globals.css';
 import './styles/table.css';
@@ -64,6 +65,7 @@ function App() {
         identification: decoded.identification,
         email: decoded.email,
         rol: decoded.rol,
+        picture: decoded.picture,
       });
     }
   }, [authToken]);
@@ -81,6 +83,7 @@ function App() {
                 <Route path='/projects' element={<IndexProjects />} />
                 <Route path='/projects/new' element={<NewProject />} />
                 <Route path='/inscriptions' element={<IndexInscriptions />} />
+                <Route path='/perfil' element={<Profile />} />
                 <Route path='page2' element={<Page2 />} />
                 <Route path='category1' element={<IndexCategory1 />} />
                 <Route path='category1/page1' element={<Category1 />} />

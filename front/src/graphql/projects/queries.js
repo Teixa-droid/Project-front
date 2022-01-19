@@ -7,6 +7,7 @@ query Projects {
     name
     status
     objectives {
+      _id
       description
       type
     }

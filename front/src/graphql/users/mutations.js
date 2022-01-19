@@ -28,4 +28,16 @@ const EDIT_USER = gql`
   }
 `;
 
-export { EDIT_USER };
+const EDIT_PROFILE = gql`
+  mutation EditProfile($_id: String!, $fields: EditProfileFilter!) {
+    editProfile(_id: $_id, fields: $fields) {
+      _id
+      name
+      lastname
+      identification
+      picture 
+    }
+  }
+`;
+
+export { EDIT_USER, EDIT_PROFILE };

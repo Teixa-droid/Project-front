@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
+import { useUser } from '../context/userContext';
 import PrivateComponent from './PrivateComponent';
 
 const SidebarLinks = () => {
     return (
         <ul className='mt-12'>
             <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
+            <SidebarRouteImage to='/perfil' title='Perfil' icon='fa fa-user' />
             <PrivateComponent roleList={['ADMINISTRATOR']}>
                 <SidebarRoute to='/users' title='Users' icon="fas fa-user" />
             </PrivateComponent>
@@ -101,5 +103,30 @@ const SidebarRoute = ({ to, title, icon }) => {
         </li>
     );
 };
+const SidebarRouteImage = ({ to, title, icon }) => {
+    const { userData } = useUser();
+    return (
+        <li>
+            <NavLink
+                to={to}
+                className={({ isActive }) =>
+                    isActive
+                        ? 'sidebar-route text-white bg-indigo-700'
+                        : 'sidebar-route text-gray-900 hover:text-white hover:bg-indigo-400'
+                }
+            >
+                <div className='flex items-center'>
+                    {userData.picture ? (
+                        <img className='h-8 w-8 rounded-full' src={userData.picture} alt='picture' />
+                    ) : (
+                        <i className={icon} />
+                    )}
+                    <span className='text-sm ml-2'>{title}</span>
+                </div>
+            </NavLink>
+        </li>
+    );
+};
+
 
 export default Sidebar;
