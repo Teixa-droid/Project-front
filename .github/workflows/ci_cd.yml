@@ -24,7 +24,7 @@ jobs:
 
       # installs dependencies
       - name: Instalacao de dependencias
-        run: yarn intall
+        run: yarn install
 
         # builds project
       - name: Compilacao do projeto
