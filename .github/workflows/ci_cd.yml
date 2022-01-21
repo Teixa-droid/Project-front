@@ -46,6 +46,6 @@ jobs:
         run: yarn install
 
           # builds project
-      - name: Compilacao do projeto
+      - name: Probas unitarias do projeto
         run: yarn test
     needs: [build]
