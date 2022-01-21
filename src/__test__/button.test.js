@@ -1,8 +1,6 @@
 import React from 'react';
-import { render, screen, cleanup } from '@testing-library/react';
-import ButtonLoading from '../components/ButtonLoading';
-
-afterEach(cleanup);
+import ButtonLoading from 'components/ButtonLoading';
+import { render, screen } from '@testing-library/react';
 it('renders okay', () => {
   render(<ButtonLoading text='hello' loading={false} disabled={false} />);
   expect(screen.getByTestId('button-loading')).toBeInTheDocument();
